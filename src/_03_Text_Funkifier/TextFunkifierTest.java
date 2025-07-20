@@ -44,6 +44,7 @@ public class TextFunkifierTest {
 
     @Test
     public void testCustomString() {
-
+    	 FreakinatorString vcs = new  FreakinatorString("Are we on the same frequency right now?");
+         assertEquals("Are we on the same freakuency right now?", vcs.funkifyText());
     }
 }

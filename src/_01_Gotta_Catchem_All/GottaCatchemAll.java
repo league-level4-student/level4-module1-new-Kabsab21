@@ -34,7 +34,7 @@ class GottaCatchemAll {
     public void testNullPointerException() {
         try {
 
-     //       rob = new Robot();
+        //    rob = new Robot();
 
             rob.setSpeed(100);
             rob.penDown();
