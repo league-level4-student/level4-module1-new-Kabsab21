@@ -10,24 +10,26 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import _04_Intro_to_Polymorphism.RedPolymorph;
+
 /*
  * 1. Create new member variables for the width and height of Polymorph then 
  * initialize them in its constructor.
- * 
+ *  	did
  * 2. Encapsulate the member variables of the Polymorph class. 
- * 
+ * 			bang
  * 3. Substitute the hard-coded numbers in the draw method of the BluePolymorph 
  * class with its width and height.
- * 
+ * 		fsdf
  * 4. Create a new sub-class of the Polymorph class called RedPolymorph.
- * 
+ *  		done
  * 5. Make RedPolymorph draw a red rectangle when its draw method is called.
- * 
+ * done
  * 6. Create an object of RedPolymorph in the PolymorphWindow class and test
  * it by drawing it like the BluePolymorph.
- * 
+ * done
  * 7. Create a new sub-class of the Polymorph class called MovingMorph.
- * 
+ * gyatytt
  * 8. Add code to its update method to make MovingMorph objects move around
  * the screen.
  * 
@@ -61,6 +63,7 @@ public class PolymorphWindow extends JPanel implements ActionListener {
     private Timer timer;
 
     Polymorph bluePoly;
+    Polymorph redPoly;
 
     public static void main(String[] args) {
         new PolymorphWindow().buildWindow();
@@ -75,6 +78,7 @@ public class PolymorphWindow extends JPanel implements ActionListener {
         window.setVisible(true);
 
         bluePoly = new BluePolymorph(50, 50);
+        redPoly = new RedPolymorph(50, 50);
 
         timer = new Timer(1000 / 30, this);
         timer.start();
@@ -87,6 +91,7 @@ public class PolymorphWindow extends JPanel implements ActionListener {
 
         // draw polymorph
         bluePoly.draw(g);
+        redPoly.draw(g);
     }
 
     @Override
