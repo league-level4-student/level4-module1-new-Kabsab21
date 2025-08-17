@@ -3,8 +3,12 @@ package _05_Polymorphs;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.MouseInfo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -53,17 +57,20 @@ import _04_Intro_to_Polymorphism.RedPolymorph;
  * 15. Create a Polymorph that displays a JOptionPane Message Dialog when
  *  clicked. Hint: MouseListener interface.
  */
+ 
 
-public class PolymorphWindow extends JPanel implements ActionListener {
+public class PolymorphWindow extends JPanel implements ActionListener , MouseMotionListener {
 
     public static final int WIDTH = 900;
     public static final int HEIGHT = 600;
 
     private JFrame window;
     private Timer timer;
-
+    
     Polymorph bluePoly;
     Polymorph redPoly;
+    Polymorph redPolya;
+    Polymorph poly;
 
     public static void main(String[] args) {
         new PolymorphWindow().buildWindow();
@@ -79,6 +86,8 @@ public class PolymorphWindow extends JPanel implements ActionListener {
 
         bluePoly = new BluePolymorph(50, 50);
         redPoly = new RedPolymorph(50, 50);
+        redPolya = new RedPolymorph(50, 50);
+        poly = new MovingMorph(0, 50);
 
         timer = new Timer(1000 / 30, this);
         timer.start();
@@ -89,15 +98,37 @@ public class PolymorphWindow extends JPanel implements ActionListener {
         g.setColor(Color.LIGHT_GRAY);
         g.fillRect(0, 0, 500, 500);
 
-        // draw polymorph
+        redPolya.draw(g);
         bluePoly.draw(g);
         redPoly.draw(g);
+        poly.draw(g);
+      
+      
+        
+        
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        repaint();
-        bluePoly.update();
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		  poly.update();
+		  this.repaint();
+	}
 
-    }
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println("gyat");
+		redPolya.setX(e.getX());
+		redPolya.setY(e.getY());
+		 this.repaint();
+	}
+
+   
 }

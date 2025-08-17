@@ -13,13 +13,17 @@ public class MovingMorph extends Polymorph{
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
+	
+			super.increaseX();
 		
+		
+		System.out.println("update");
 	}
 
 	@Override
 	public void draw(Graphics g) {
 		// TODO Auto-generated method stub
-		g.setColor(Color.blue);
+		g.setColor(Color.GREEN);
 		g.fillRect(x, y, getWidth(), getHeight());
 	}
 

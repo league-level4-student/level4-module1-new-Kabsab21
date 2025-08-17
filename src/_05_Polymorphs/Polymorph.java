@@ -21,6 +21,17 @@ public abstract class Polymorph {
     public int getHeight() {
     	return height;
     }
+     public void increaseX() {
+    	x = x+1;
+    	
+    }
+    public void setX(int input) {
+    	x = input;
+    	
+    }
+    public void setY(int input) {
+    	y = input;
+    }
     
     public abstract void update();
     
