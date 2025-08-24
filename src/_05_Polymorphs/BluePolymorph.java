@@ -17,7 +17,7 @@ public class BluePolymorph extends Polymorph{
 
     @Override
     public void update() {
-        
+       
     }
 	
 }

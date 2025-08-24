@@ -9,8 +9,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -36,10 +38,10 @@ import _04_Intro_to_Polymorphism.RedPolymorph;
  * gyatytt
  * 8. Add code to its update method to make MovingMorph objects move around
  * the screen.
- * 
+ * ddd
  * 9. Create a MovingMorph object in your PolymorphWindow class and test it
  * by calling its draw and update methods.
- * 
+ * ddd
  * 10. Now, delete all references to Polymorphs subclasses inside your
  * PolymorphWindow class.
  * 
@@ -59,7 +61,7 @@ import _04_Intro_to_Polymorphism.RedPolymorph;
  */
  
 
-public class PolymorphWindow extends JPanel implements ActionListener , MouseMotionListener {
+public class PolymorphWindow extends JPanel implements ActionListener , MouseMotionListener , MouseListener {
 
     public static final int WIDTH = 900;
     public static final int HEIGHT = 600;
@@ -67,14 +69,17 @@ public class PolymorphWindow extends JPanel implements ActionListener , MouseMot
     private JFrame window;
     private Timer timer;
     
-    Polymorph bluePoly;
-    Polymorph redPoly;
-    Polymorph redPolya;
-    Polymorph poly;
+//    Polymorph bluePoly;
+//    Polymorph redPoly;
+//    Polymorph redPolya;
+//    Polymorph poly;
 
+    ArrayList<Polymorph> morphs = new ArrayList<Polymorph>();
+    
     public static void main(String[] args) {
         new PolymorphWindow().buildWindow();
     }
+    ClickPolymorph p = new ClickPolymorph(200,200);
 
     public void buildWindow() {
         window = new JFrame("IT'S MORPHIN' TIME!");
@@ -84,10 +89,16 @@ public class PolymorphWindow extends JPanel implements ActionListener , MouseMot
         window.pack();
         window.setVisible(true);
 
-        bluePoly = new BluePolymorph(50, 50);
-        redPoly = new RedPolymorph(50, 50);
-        redPolya = new RedPolymorph(50, 50);
-        poly = new MovingMorph(0, 50);
+        morphs.add( new BluePolymorph(100, 50));
+        morphs.add( new RedPolymorph(50, 50));
+        morphs.add(new RedPolymorph(150, 50));
+        morphs.add(new MovingMorph(0, 50));
+        morphs.add( new BluePolymorph(200, 50));
+        window.addMouseMotionListener(this);
+        window.addMouseListener(this);
+        morphs.add(p);
+        
+        
 
         timer = new Timer(1000 / 30, this);
         timer.start();
@@ -98,10 +109,10 @@ public class PolymorphWindow extends JPanel implements ActionListener , MouseMot
         g.setColor(Color.LIGHT_GRAY);
         g.fillRect(0, 0, 500, 500);
 
-        redPolya.draw(g);
-        bluePoly.draw(g);
-        redPoly.draw(g);
-        poly.draw(g);
+        for( Polymorph m : morphs ) {
+        	 m.draw(g);
+        }
+        morphs.get(2).increaseX();
       
       
         
@@ -111,7 +122,7 @@ public class PolymorphWindow extends JPanel implements ActionListener , MouseMot
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		  poly.update();
+	//	  morphs.get(2).update();
 		  this.repaint();
 	}
 
@@ -124,10 +135,43 @@ public class PolymorphWindow extends JPanel implements ActionListener , MouseMot
 	@Override
 	public void mouseMoved(MouseEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("gyat");
-		redPolya.setX(e.getX());
-		redPolya.setY(e.getY());
-		 this.repaint();
+		
+		 morphs.get(3).setX(e.getX());
+		 morphs.get(3).setY(e.getY());
+	//	 this.repaint();
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		System.out.println("hello!");
+		boolean clicked = p.checkClick(e.getX(), e.getY());
+		if(clicked) {
+			System.out.println("clicked");
+		}
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 
    
