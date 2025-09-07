@@ -11,7 +11,7 @@ import junit.framework.TestCase;
 /* 
  * 1. Create a Patient class capable of feeling cared for and having their pulse 
  * checked.
- * 
+ * ssss
  * 2. Create a Doctor abstract class capable of doing medicine, holding a list 
  * of assigned Patients, assigning patients to the list and getting the list.
  * 
@@ -32,7 +32,10 @@ import junit.framework.TestCase;
 
 public class HospitalTest extends TestCase {
 
+	
     private Hospital testHospital = new Hospital();
+    
+    
 
     public void testAddDoctor() {
         testHospital.addDoctor(new GeneralPractitioner());
@@ -85,9 +88,13 @@ public class HospitalTest extends TestCase {
         Patient macky = new Patient();
         testDoctor.assignPatient(max);
         testDoctor.assignPatient(macky);
+        System.out.println(max.feelsCaredFor());
+        System.out.println(macky.feelsCaredFor());
         assertEquals(false, max.feelsCaredFor());
         assertEquals(false, macky.feelsCaredFor());
         testDoctor.doMedicine();
+        System.out.println(max.feelsCaredFor());
+        System.out.println(macky.feelsCaredFor());
         assertEquals(true, max.feelsCaredFor());
         assertEquals(true, macky.feelsCaredFor());
     }
