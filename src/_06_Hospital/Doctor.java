@@ -9,9 +9,14 @@ public abstract class Doctor {
 
 	ArrayList<Patient>assipa = new ArrayList<Patient>();
 	
-	protected void assignPatient(Patient patient) {
+	protected void assignPatient(Patient patient) throws DoctorFullException{
 		// TODO Auto-generated method stub
+		
+		if(assipa.size() >= 3) {
+			throw new DoctorFullException();
+		}
 		assipa.add(patient);
+		
 	}
 
 	protected void doMedicine() {

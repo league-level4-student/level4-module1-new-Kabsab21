@@ -17,11 +17,7 @@ public class GeneralPractitioner extends Doctor {
 		return false;
 	}
 
-	@Override
-	protected void doMedicine() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	
 

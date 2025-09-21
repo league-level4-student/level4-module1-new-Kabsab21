@@ -28,7 +28,7 @@ public class Hospital {
 		return patients;
 	}
 
-	public void assignPatientsToDoctors() {
+	public void assignPatientsToDoctors() throws DoctorFullException {
 		// TODO Auto-generated method stu
 		doctors.add(new GeneralPractitioner());
 		doctors.add(new GeneralPractitioner());
